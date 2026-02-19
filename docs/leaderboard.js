@@ -131,9 +131,9 @@ function setupColumnToggles(){
     ["rank","Rank"],
     ["team","Team"],
     ["model","Model"],
-    ["score","Score"],
     ["timestamp_utc","Date (UTC)"],
-    ["notes","Notes"],
+    ["score","Score (Accuracy)"],
+    ["notes","F1 Score"],
   ];
   const wrap = document.getElementById("columnToggles");
   wrap.innerHTML = "";
