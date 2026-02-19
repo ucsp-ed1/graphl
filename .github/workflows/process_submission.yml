@@ -1,10 +1,11 @@
 name: Process Submission
 
-# CHANGE 1: Trigger on PUSH to main (instead of PR closed)
 on:
-  push:
-    branches:
-      - main
+  pull_request_target:
+    paths:
+      - 'submissions/inbox/**'
+  workflow_dispatch:
+
 
 permissions:
   contents: write
