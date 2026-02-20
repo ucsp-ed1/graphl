@@ -35,7 +35,7 @@ jobs:
           SUBMISSION_PRIVATE_KEY: ${{ secrets.SUBMISSION_PRIVATE_KEY }}
           TEST_LABELS_CSV: ${{ secrets.TEST_LABELS_CSV }}
         run: |
-        # Get list of new .enc files in submissions/
+          # Get list of new .enc files in submissions/
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep 'submissions/.*\.enc$' || true)
           export CHANGED_FILES
           python .github/scripts/process_submission.py
