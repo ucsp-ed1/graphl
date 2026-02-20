@@ -72,11 +72,7 @@ jobs:
           rm -f submissions/*.csv
           
           # 2. Add ONLY the leaderboard
-          if [ -f "leaderboard.csv" ]; then
-            git add leaderboard.csv
-          elif [ -f "leaderboard/leaderboard.csv" ]; then
-            git add leaderboard/leaderboard.csv
-          fi
+          git add docs/leaderboard.csv
           
           # 3. Commit and Push to main
           if ! git diff --cached --quiet; then
