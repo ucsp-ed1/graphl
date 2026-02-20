@@ -16,6 +16,7 @@ def read_latest_submission():
     if not files:
         raise NoEncryptedFileError("No encrypted submission files found in 'submissions' directory.")
     latest_file = max(files, key=lambda f: os.path.getmtime(os.path.join(SUBMISSION_DIR, f)))
+    print(latest_file)
     return os.path.join(SUBMISSION_DIR, latest_file)
 
 
