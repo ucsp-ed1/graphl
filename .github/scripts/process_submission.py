@@ -39,7 +39,7 @@ def decrypt_submission_file(encrypted_file_path):
     return decrypted_file_path
 
 def process_submission():
-    summary_lines = ["### 📊 Submission Results", ""]
+    summary_lines = ["### Submission Results", ""]
     processed_any = False
     
     try:
@@ -59,23 +59,22 @@ def process_submission():
                     # 2. Score (for the summary comment)
                     score = calculate_scores(decrypted_file)
                     
-                    summary_lines.append(f"✅ **File:** `{os.path.basename(enc_file)}`")
-                    summary_lines.append(f"⭐ **Score:** `{score}`")
+                    summary_lines.append(f" **File:** `{os.path.basename(enc_file)}`")
+                    summary_lines.append(f" **Score:** `{score}`")
                     summary_lines.append("---")
                     processed_any = True
                     
                 except Exception as e:
-                    summary_lines.append(f"❌ **File:** `{os.path.basename(enc_file)}`")
+                    summary_lines.append(f"**File:** `{os.path.basename(enc_file)}`")
                     summary_lines.append(f"**Error:** {str(e)}")
                     summary_lines.append("---")
 
-        if processed_any:
-            # Update the leaderboard (scans the directory for the new .csv files)
-            update_leaderboard_csv()
+        update_leaderboard_csv()
+        print("Leaderboard actualizado con éxito.")
         
     except Exception as e:
         print(f"Critical error: {e}")
-        summary_lines.append(f"⚠️ **Critical Error:** {str(e)}")
+        summary_lines.append(f"**Critical Error:** {str(e)}")
 
     # Write the summary for the GitHub Action to post as a comment
     with open(os.path.join(project_root, "submission_summary.md"), "w") as f:
