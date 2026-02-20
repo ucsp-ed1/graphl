@@ -43,7 +43,7 @@ jobs:
           BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} pr_branch)
           
           # 3. Diff from that base to the PR tip
-          CHANGED_FILES=$(git diff --name-only $BASE_SHA pr_branch | grep 'submissions/.*\.enc$' || true)
+          CHANGED_FILES=$(git diff --name-only --diff-filter=A $BASE_SHA pr_branch | grep 'submissions/.*\.enc$' || true)
           
           echo "files=$CHANGED_FILES" >> $GITHUB_OUTPUT
           echo "Detected files: $CHANGED_FILES"
